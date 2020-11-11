@@ -66,7 +66,7 @@
 import { defineComponent } from "vue";
 import { NODE_URL, STDLIB_ADDRESS } from "@/config";
 import { HTTPProvider, starcoin, types } from "starcoin-typescript-sdk";
-import { encode_tx_payload } from "starcoin-typescript-sdk/build/main/utils/tx";
+import { utils } from "starcoin-typescript-sdk";
 import code from "../code";
 import {
   MoveStruct,
@@ -135,7 +135,7 @@ export default defineComponent({
         .then(res => res.blob())
         .then(b => b.arrayBuffer());
       const stake_code = new Uint8Array(blob);
-      const payload = encode_tx_payload(
+      const payload = utils.tx.encodeTxnPayload(
         stake_code,
         [this.stakeTokenTypeTag, this.rewardTokenTypeTag],
         [{ Address: this.poolAddress }, { U128: toStake }]
@@ -147,7 +147,7 @@ export default defineComponent({
       const blob = await fetch(code.withdraw_rewards)
         .then(res => res.blob())
         .then(b => b.arrayBuffer());
-      const payload = encode_tx_payload(
+      const payload = utils.tx.encodeTxnPayload(
         new Uint8Array(blob),
         [this.stakeTokenTypeTag, this.rewardTokenTypeTag],
         [{ Address: this.connectedAddress }]
@@ -159,7 +159,7 @@ export default defineComponent({
       const blob = await fetch(code.exit_pool)
         .then(res => res.blob())
         .then(b => b.arrayBuffer());
-      const payload = encode_tx_payload(
+      const payload = utils.tx.encodeTxnPayload(
         new Uint8Array(blob),
         [this.stakeTokenTypeTag, this.rewardTokenTypeTag],
         [{ Address: this.connectedAddress }]
