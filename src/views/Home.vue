@@ -13,7 +13,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-import StakePool from "@/components/StakePool.vue"; // @ is an alias to /src
+import StakePool from "@/components/StakePool.vue";
+import {
+  poolAddress,
+  poolModuleName,
+  poolRewardToken,
+  poolStakeToken
+} from "@/config"; // @ is an alias to /src
 
 export default defineComponent({
   name: "Home",
@@ -24,10 +30,10 @@ export default defineComponent({
   computed: {
     poolInfo() {
       return {
-        poolAddress: "2291c747b396303a6475db8468a910d0",
-        poolModuleName: "2291c747b396303a6475db8468a910d0::RewardPool",
-        poolStakeToken: "00000000000000000000000000000001::STC::STC",
-        poolRewardToken: "2291c747b396303a6475db8468a910d0::CoCo::CoCo"
+        poolAddress: poolAddress,
+        poolModuleName: poolModuleName,
+        poolStakeToken: poolStakeToken,
+        poolRewardToken: poolRewardToken
       };
     }
   }

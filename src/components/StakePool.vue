@@ -67,15 +67,11 @@ import { defineComponent } from "vue";
 import { NODE_URL, STDLIB_ADDRESS } from "@/config";
 import { HTTPProvider, starcoin, types } from "starcoin-typescript-sdk";
 import { encode_tx_payload } from "starcoin-typescript-sdk/build/main/utils/tx";
-// import stake_mv from "url-loader!../../contracts/target/stake.mv";
-// console.log(stake_mv);
 import code from "../code";
-import { str } from "starcoin-typescript-sdk/build/main/lib/runtime/serde/types";
 import {
   MoveStruct,
   MoveValue
 } from "starcoin-typescript-sdk/build/main/types";
-console.log(code);
 
 const stcProvider = new HTTPProvider(NODE_URL);
 
@@ -135,13 +131,10 @@ export default defineComponent({
     },
     async stake() {
       const toStake = this.stakeForm.toStake;
-      console.log(toStake);
-      console.log(code.stake);
       const blob = await fetch(code.stake)
         .then(res => res.blob())
         .then(b => b.arrayBuffer());
       const stake_code = new Uint8Array(blob);
-      console.log(stake_code);
       const payload = encode_tx_payload(
         stake_code,
         [this.stakeTokenTypeTag, this.rewardTokenTypeTag],

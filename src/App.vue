@@ -1,6 +1,7 @@
 <template>
   <div id="nav">
-    <router-link to="/">CoCo Pool</router-link>
+    <router-link to="/">CoCo Pool</router-link> |
+    <router-link to="/deploy">Deploy</router-link>
   </div>
   <router-view />
 </template>
