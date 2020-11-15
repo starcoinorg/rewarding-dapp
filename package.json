@@ -10,7 +10,7 @@
   "dependencies": {
     "ant-design-vue": "^2.0.0-beta.15",
     "core-js": "^3.6.5",
-    "starcoin-typescript-sdk": "file:../starcoin-sdk",
+    "starcoin-typescript-sdk": "starcoinorg/starcoin-typescript-sdk#f835395fc648fa52237d0a6b159aad0430e94357",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
